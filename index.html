@@ -62,6 +62,98 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-18-8-26About-Torch" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/26/18-8-26About-Torch/" class="article-date">
+  <time datetime="2018-08-26T09:25:28.000Z" itemprop="datePublished">2018-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/26/18-8-26About-Torch/">18.8.26About Torch</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>静态的计算模块如Tenorflow，大部分时候，是预先搭建好的一个计算系统，后期无法改动（除了例外dynamic_rnn()，总体上还是一个静态思维）。当然很多情况下这样足矣。  </p>
+<p>不动结构当然可以提高效率，但是一旦计算流程不是静态的，计算图要变动，最典型就是RNN：有时候RNN的time stepp不会一样，或者在training和testing 时候，batch_size和time_step也不一样。</p>
+<p>#Overfitting<br>一般在回归分类里，在样本不足的情况下，有时候误差相对较大的线反而能正确反映趋势，而误差较小的线过于拟合坐标点而导致弯弯曲曲的。</p>
+<p>解决办法：  </p>
+<ol>
+<li>增大数据量，大部分过拟合产生原因就是数据量不足  </li>
+<li>运用正规化regularization，通过在计算误差时做手脚，来使得W的变化会受到cost的惩罚  </li>
+<li>Dropout regularization，在训练时，随机忽略掉一些神经元和神经联结，使得神经网络在不完整的情况下训练一遍，在下一次再随机忽略掉另一些。这样可以使的预测结果不会依赖于其中某些特定的神经元。  </li>
+</ol>
+<p>#Batch Normalization<br>在神经网络中，数据分布对训练会产生影响。如某个神经元x的值为1，某个Weights初始值为0.1，这样一层神经元计算后Wx=0.1，如果x=20，则Wx=2。接下来当加上一层激励函数（引入非线性因素，解决线性模型无法解决的问题）的时候，激活这个Wx值的时候，如果使用的是tanh的激励函数，Wx的激活值变成～0.1和～1，接近1的部分已经处在了激励函数的饱和阶段，就是说<strong>无论x再怎么扩大，tanh输出值也是接近1</strong>。  </p>
+<p>normalization预处理数据使得x变化范围不会太大，让输入值经过激励函数的有效区间，但是上面所说的不敏感问题不仅仅发生在输入层，在隐藏层也经常发生。<strong>批处理batch normalization正是用于处理隐藏层的输入结果</strong>。</p>
+<p>输入X-全连接层-BN-激励函数-全连接层</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/26/18-8-26About-Torch/" data-id="cjlaowe7x00008q9iwenwgxz3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-生成对抗网络Generative-Adversarial-Nets" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/26/生成对抗网络Generative-Adversarial-Nets/" class="article-date">
+  <time datetime="2018-08-26T08:45:57.000Z" itemprop="datePublished">2018-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/26/生成对抗网络Generative-Adversarial-Nets/">生成对抗网络Generative Adversarial Nets</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>神经网络：  </p>
+<ul>
+<li>普通的前向传播神经网络  </li>
+<li>分析图片的CNN卷积神经网络  </li>
+<li>分析语音的RNN循环神经网络<br>这些神经网络都是用来输入数据，得到想要的结果，因为这些神经网络能很好地将数据与结果通过某种关系建立起来</li>
+</ul>
+<p>#生成网络<br>生成网络利用随机数来生成结果<br>GAN里有两个部件：<strong>Generator&amp;Discriminator</strong><br><strong>Generator</strong>会根据随机数来生成有意义的数据，<strong>Discriminator</strong>会学习如何判断哪些是真实数据，哪些是生成数据，再将学习经验反向传递给Generator，让Generator能根据随机数生成更像真实数据的数据</p>
+<p>#用处<br>用来生成图片，甚至可以让图片做加减法，如<strong>戴眼镜的男人</strong>减去<strong>男人</strong>加上<strong>女人</strong>就能生成<strong>戴眼镜的女人</strong>。也可以根据你随便画的几笔草图来生成风景图  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/08/26/生成对抗网络Generative-Adversarial-Nets/" data-id="cjlaowe8500048q9imjpbvvna" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-DQN" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/25/DQN/" class="article-date">
@@ -76,7 +168,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/25/DQN/">DQN强化学习</a>
+      <a class="article-title" href="/2018/08/25/DQN/">强化学习Deep Q Network</a>
     </h1>
   
 
@@ -84,11 +176,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>Deep Q Network能用了训练游戏AI  </p>
+<p>##神经网络的作用<br>每一个state，以及在此之下每个action所拥有的Q值，通过输入state而得到action。但如今问题太复杂，而由state、action、Q组成的表格太大了。<br>所以利用神经网络来代替表格，将状态和动作作为神经网络输入，分析得出Q，然后state对应Q最大的action。</p>
+<p>##更新神经网络<br>如何训练：首先需要a1，a2正确的Q值，namely，现实Q。同样，还需要一个估计Q来实现神经网络的更新，所以神经网络的参数就是老NN参数加学习率alpha乘以现实Q与估计Q的差距。<br>s2–&gt;NN–&gt;Q(s2,a1)&amp;Q(s2,a2)<br>上面算出的就是估计Q，选取Q估计中最大值的action换取环境奖励。而现实Q也包括从神经网络分析出来的两个估计Q，不过这两个Q上针对下一步在s‘的估计。<br>a(现实Q-估计Q)–&gt;NN</p>
+<p>##DQN两大利器<br>Experience replay和Fixed Q-targets使DQN变得无比强大。<br>Q learning上一种off-policy离线学习法，能学当前经历的，也能学过去经历过的，甚至学习别人的经历。<br>Fixed Q-targets上一种打乱相关性的机理，使用这个能利用两个结构相同但参数不同的神经网络，预测估计Q<br>的神经网络具备最新参数，而预测现实Q的神经网络使用参数上很久以前的。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/25/DQN/" data-id="cjl9iyxlx0000keg3sk4mag8l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/25/DQN/" data-id="cjlaowe8200028q9izjn50qw8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -142,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/25/My-first-blog/" data-id="cjl9iyxm20001keg3e094qk66" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/25/My-first-blog/" data-id="cjlaowe8100018q9ic6su5va5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -187,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/25/hello-world/" data-id="cjl9iyxm40002keg3c8rs0ndd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/25/hello-world/" data-id="cjlaowe8400038q9ijp3k4viy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -228,7 +324,15 @@
       <ul>
         
           <li>
-            <a href="/2018/08/25/DQN/">DQN强化学习</a>
+            <a href="/2018/08/26/18-8-26About-Torch/">18.8.26About Torch</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/26/生成对抗网络Generative-Adversarial-Nets/">生成对抗网络Generative Adversarial Nets</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/25/DQN/">强化学习Deep Q Network</a>
           </li>
         
           <li>

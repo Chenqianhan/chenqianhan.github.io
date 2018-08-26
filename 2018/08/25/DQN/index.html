@@ -5,16 +5,19 @@
   
 
   
-  <title>DQN强化学习 | Hexo</title>
+  <title>强化学习Deep Q Network | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="DQN强化学习">
+  <meta name="description" content="Deep Q Network能用了训练游戏AI   ##神经网络的作用每一个state，以及在此之下每个action所拥有的Q值，通过输入state而得到action。但如今问题太复杂，而由state、action、Q组成的表格太大了。所以利用神经网络来代替表格，将状态和动作作为神经网络输入，分析得出Q，然后state对应Q最大的action。 ##更新神经网络如何训练：首先需要a1，a2正确的Q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="强化学习Deep Q Network">
 <meta property="og:url" content="http://yoursite.com/2018/08/25/DQN/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Deep Q Network能用了训练游戏AI   ##神经网络的作用每一个state，以及在此之下每个action所拥有的Q值，通过输入state而得到action。但如今问题太复杂，而由state、action、Q组成的表格太大了。所以利用神经网络来代替表格，将状态和动作作为神经网络输入，分析得出Q，然后state对应Q最大的action。 ##更新神经网络如何训练：首先需要a1，a2正确的Q">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-25T14:21:23.656Z">
+<meta property="og:updated_time" content="2018-08-26T09:10:47.370Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DQN强化学习">
+<meta name="twitter:title" content="强化学习Deep Q Network">
+<meta name="twitter:description" content="Deep Q Network能用了训练游戏AI   ##神经网络的作用每一个state，以及在此之下每个action所拥有的Q值，通过输入state而得到action。但如今问题太复杂，而由state、action、Q组成的表格太大了。所以利用神经网络来代替表格，将状态和动作作为神经网络输入，分析得出Q，然后state对应Q最大的action。 ##更新神经网络如何训练：首先需要a1，a2正确的Q">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -75,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      DQN强化学习
+      强化学习Deep Q Network
     </h1>
   
 
@@ -83,11 +86,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>Deep Q Network能用了训练游戏AI  </p>
+<p>##神经网络的作用<br>每一个state，以及在此之下每个action所拥有的Q值，通过输入state而得到action。但如今问题太复杂，而由state、action、Q组成的表格太大了。<br>所以利用神经网络来代替表格，将状态和动作作为神经网络输入，分析得出Q，然后state对应Q最大的action。</p>
+<p>##更新神经网络<br>如何训练：首先需要a1，a2正确的Q值，namely，现实Q。同样，还需要一个估计Q来实现神经网络的更新，所以神经网络的参数就是老NN参数加学习率alpha乘以现实Q与估计Q的差距。<br>s2–&gt;NN–&gt;Q(s2,a1)&amp;Q(s2,a2)<br>上面算出的就是估计Q，选取Q估计中最大值的action换取环境奖励。而现实Q也包括从神经网络分析出来的两个估计Q，不过这两个Q上针对下一步在s‘的估计。<br>a(现实Q-估计Q)–&gt;NN</p>
+<p>##DQN两大利器<br>Experience replay和Fixed Q-targets使DQN变得无比强大。<br>Q learning上一种off-policy离线学习法，能学当前经历的，也能学过去经历过的，甚至学习别人的经历。<br>Fixed Q-targets上一种打乱相关性的机理，使用这个能利用两个结构相同但参数不同的神经网络，预测估计Q<br>的神经网络具备最新参数，而预测现实Q的神经网络使用参数上很久以前的。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/25/DQN/" data-id="cjl9iyxlx0000keg3sk4mag8l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/25/DQN/" data-id="cjlaowe8200028q9izjn50qw8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -95,6 +102,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/08/26/生成对抗网络Generative-Adversarial-Nets/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          生成对抗网络Generative Adversarial Nets
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/25/My-first-blog/" id="article-nav-older" class="article-nav-link-wrap">
@@ -136,7 +152,15 @@
       <ul>
         
           <li>
-            <a href="/2018/08/25/DQN/">DQN强化学习</a>
+            <a href="/2018/08/26/18-8-26About-Torch/">18.8.26About Torch</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/26/生成对抗网络Generative-Adversarial-Nets/">生成对抗网络Generative Adversarial Nets</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/25/DQN/">强化学习Deep Q Network</a>
           </li>
         
           <li>
