@@ -277,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/29/Image-ML-LiFefe/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/31/Image-Classification-pipeline/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -296,8 +296,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/29/Image-ML-LiFefe/" itemprop="url">
-                  Image&ML-LiFefe
+                <a class="post-title-link" href="/2018/08/31/Image-Classification-pipeline/" itemprop="url">
+                  Image Classification pipeline
                 </a>
               
             
@@ -323,7 +323,7 @@
                 
               
 
-              <time title="Created: 2018-08-29 21:43:49 / Modified: 21:44:57" itemprop="dateCreated datePublished" datetime="2018-08-29T21:43:49+08:00">2018-08-29</time>
+              <time title="Created: 2018-08-31 12:40:45 / Modified: 12:44:43" itemprop="dateCreated datePublished" datetime="2018-08-31T12:40:45+08:00">2018-08-31</time>
             
 
             
@@ -368,6 +368,7 @@
 <li>Illumination  </li>
 <li>Deformation各种奇怪的形态</li>
 <li>Occlusion遮挡  </li>
+<li>Background Clutter</li>
 <li>Intraclass variation  </li>
 </ul>
 <p>An image classifier can be Data-driven approach:  </p>
@@ -376,7 +377,12 @@
 <li>Use Machine Learning to train an image classifier  </li>
 <li>Evaluate the calssifier on a withheld set of test image</li>
 </ol>
-<p>##第一个分类器：Nearest Neighbor Classifier<br>CIFAR-10用来训练测试NNC</p>
+<p>##第一个分类器：Nearest Neighbor Classifier<br>CIFAR-10用来训练测试NNC   </p>
+<p>speed depend on data size<br>近邻算法是一个即时的训练方法，但同时是一个昂贵的测试方法，因为需要遍历。但是在训练的时候经过大量的计算，事实上对于每个测试图片都进行恒量的计算而无视data szie。  </p>
+<p>有很多种距离计算的算法如曼哈顿距离（比较绝对值）<br>如何进行距离的计算：<br>distance：一个用来进行控制的离散选择，这个距离选择叫超参数hyperparameter<br>k：另一种超参数，在近邻算法分类器背景下，k-nearest neighbor classifier的k<br><strong>How to set the hyperparameter？-&gt;Literally, It’s very problem-dependent. Must try them all out and see what works best</strong>。</p>
+<p>测试集数算法泛化程度的代表，事实上，不应只相信测试集，而是忘记测试数据，这样才能得知算法对于其他数据的泛化程度（对其他数据的有效性）。  <strong>有时候在训练过程中表现很好而测试过程中不那么好，这就是泛化能力不够，说明这个分类器已经过拟合</strong>。</p>
+<p>将训练集分成“fold”，比如说把训练数据分成五等份，也就是说使用20%训练数据来作为想象中的验证集来调整超参数。从而对不同超参数的学习效率进行对比，通过比对不同K值下取多少个近邻值才能得出准确结果。  </p>
+<p>###Cross-validation<br>如果对数据量不满意，可以用cross-validation，循环选择测试验证折<br><img src="/2018/08/31/Image-Classification-pipeline/1.jpg" title="cross-validation"></p>
 
           
         
