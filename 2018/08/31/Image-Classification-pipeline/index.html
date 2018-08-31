@@ -117,7 +117,8 @@
 <meta property="og:description" content="#Image Classification pipelinechallenges:    Illumination   Deformation各种奇怪的形态 Occlusion遮挡   Background Clutter Intraclass variation    An image classifier can be Data-driven approach:    Collect a da">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/08/31/Image-Classification-pipeline/1.jpg">
-<meta property="og:updated_time" content="2018-08-31T05:28:23.335Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/31/Image-Classification-pipeline/2.jpg">
+<meta property="og:updated_time" content="2018-08-31T12:08:37.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Image Classification pipeline">
 <meta name="twitter:description" content="#Image Classification pipelinechallenges:    Illumination   Deformation各种奇怪的形态 Occlusion遮挡   Background Clutter Intraclass variation    An image classifier can be Data-driven approach:    Collect a da">
@@ -325,7 +326,7 @@
                 
               
 
-              <time title="Created: 2018-08-31 12:40:45 / Modified: 13:28:23" itemprop="dateCreated datePublished" datetime="2018-08-31T12:40:45+08:00">2018-08-31</time>
+              <time title="Created: 2018-08-31 12:40:45 / Modified: 20:08:37" itemprop="dateCreated datePublished" datetime="2018-08-31T12:40:45+08:00">2018-08-31</time>
             
 
             
@@ -384,7 +385,16 @@
 <p>将训练集分成“fold”，比如说把训练数据分成五等份，也就是说使用20%训练数据来作为想象中的验证集来调整超参数。从而对不同超参数的学习效率进行对比，通过比对不同K值下取多少个近邻值才能得出准确结果。  </p>
 <p>###Cross-validation<br>如果对数据量不满意，可以用cross-validation，循环选择测试验证折<br><img src="/2018/08/31/Image-Classification-pipeline/1.jpg" title="cross-validation"></p>
 <p>利用交叉验证法找出最佳k值<br>不过K-Nearest Neighbor on images never used because of its terrible performance at test time and </p>
-<p>#summary<br>神经网络就像是积木一样，将一块块模块组成神经网络。如CNN与RNN的组合可以使得神经网络输入图片来输出图片场景的描述（RNN擅长排序）</p>
+<p>#How neural network works<br>神经网络就像是积木一样，将一块块模块组成神经网络。如CNN与RNN的组合可以使得神经网络输入图片来输出图片场景的描述（RNN擅长排序）. </p>
+<p>Parametric approach<br>输入image - f(x,W) - 输出number indicating class scores</p>
+<p>不断地优化Weight使得分类器能正确地计算。实际上就是为了使Weight提高模型匹配率<br><img src="/2018/08/31/Image-Classification-pipeline/2.jpg" title="socre-function"><br>在这图里，汽车这图里，car所得分数最高，所以分类器分类正确，但是在青蛙这里frog却是最低分可以说是灾难了（也许是因为颜色相近无法突出纹理「这也是灰度化CIAF-10降低精确度的原因」，也有可能因为遮挡）</p>
+<p>###损失函数<br>接下来我们就需要用到损失函数来定量地测定分类器工作的好坏。通过这个函数的表达式来鉴别一个确定的分类器W得到的结果。</p>
+<p><strong>通过这个函数可以找出最小化损失的W</strong><br>不需要控制W的初始值<br>Coming up：  </p>
+<ul>
+<li>Loss function  </li>
+<li>Optimization  </li>
+<li>ConvNets  </li>
+</ul>
 
       
     </div>
