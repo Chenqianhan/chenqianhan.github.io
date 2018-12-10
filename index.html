@@ -277,6 +277,821 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/19/OpenCV/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JaceChen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈乾乾的学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/19/OpenCV/" itemprop="url">
+                  Untitled
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-19 16:19:55" itemprop="dateCreated datePublished" datetime="2018-11-19T16:19:55+08:00">2018-11-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-10 15:58:59" itemprop="dateModified" datetime="2018-12-10T15:58:59+08:00">2018-12-10</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##OpenCV的安装配置及依赖包出错的解决</p>
+<p>如果不是闲着蛋疼h就不要手动了</p>
+<pre><code>sudo apt-get install libopencv-dev python-opencv
+</code></pre><p>搞定了，如果是python3就j改成python3-opencv</p>
+<p>…………………………….<br>因为我是手动编译安装所以得自己手动先安装依赖包</p>
+<pre><code>sudo apt-get update
+sudo apt-get install build-essential cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+</code></pre><p>然后第二条出现了依赖包错误，装依赖包再出现依赖包错误。错误如下</p>
+<pre><code>cmake : Depends: libcurl3 (&amp;gt;= 7.16.2) but it is not going to be installed
+ libavcodec-dev : Depends: libavcodec57 (= 7:3.4.4-0ubuntu0.18.04.1) but it is not going to be installed or
+                       libavcodec-extra57 (= 7:3.4.4-0ubuntu0.18.04.1) but it is not going to be installed
+              Depends: libavutil-dev (= 7:3.4.4-0ubuntu0.18.04.1) but it is not going to be installed
+              Depends: libswresample-dev (= 7:3.4.4-0ubuntu0.18.04.1) but it is not going to be installed
+libavformat-dev : Depends: libavformat57 (= 7:3.4.4-0ubuntu0.18.04.1) but it is not going to be installed
+              Depends: libavutil-dev (= 7:3.4.4-0ubuntu0.18.04.1) but it is not going to be installed
+              Depends: libswresample-dev (= 7:3.4.4-0ubuntu0.18.04.1) but it is not going to be installed           
+libgtk2.0-dev : Depends: libgtk2.0-0 (= 2.24.23-0ubuntu1.4) but 2.24.32-1ubuntu1 is to be installed
+             Depends: libglib2.0-dev (&amp;gt;= 2.27.3) but it is not going to be installed
+             Depends: libgdk-pixbuf2.0-dev (&amp;gt;= 2.21.0) but it is not going to be installed
+             Depends: libpango1.0-dev (&amp;gt;= 1.20) but it is not going to be installed
+             Depends: libatk1.0-dev (&amp;gt;= 1.29.2) but it is not going to be installed
+             Depends: libcairo2-dev (&amp;gt;= 1.6.4-6.1) but it is not going to be installed
+             Depends: libx11-dev (&amp;gt;= 2:1.0.0-6) but it is not going to be installed
+             Depends: libxext-dev (&amp;gt;= 1:1.0.1-2) but it is not going to be installed
+             Depends: libxinerama-dev (&amp;gt;= 1:1.0.1-4.1) but it is not going to be installed
+             Depends: libxi-dev (&amp;gt;= 1:1.0.1-4) but it is not going to be installed
+             Depends: libxrandr-dev (&amp;gt;= 2:1.2.99) but it is not going to be installed
+             Depends: libxcursor-dev but it is not going to be installed
+             Depends: libxfixes-dev (&amp;gt;= 1:3.0.0-3) but it is not going to be installed
+             Depends: libxcomposite-dev (&amp;gt;= 1:0.2.0-3) but it is not going to be installed
+             Depends: libxdamage-dev (&amp;gt;= 1:1.0.1-3) but it is not going to be installed
+             Recommends: python (&amp;gt;= 2.4) but it is not going to be installed
+             Recommends: debhelper but it is not going to be installed
+libswscale-dev : Depends: libavutil-dev (= 7:3.4.4-0ubuntu0.18.04.1) but it is not going to be installed
+              Depends: libswscale4 (= 7:3.4.4-0ubuntu0.18.04.1) but it is not going to be installed
+
+E: Unable to correct problems, you have held broken packages.
+</code></pre><p>然后按照上面指示安装依赖包只有装libcurl3成功，其他都是连环错误。<br>经大佬指出是我这个ubuntu18.04系统源的问题。</p>
+<pre><code>uname -a
+</code></pre><p>得到系统信息Linux ubuntu 4.15.0-38-generic #41-Ubuntu SMP Wed Oct 10 10:59:38 UTC<br>2018 x86_64 x86_64 x86_64 GNU/Linux  </p>
+<pre><code>cat /etc/apt/sources.list
+</code></pre><p>得</p>
+<pre><code># deb cdrom:[Ubuntu 18.04.1 LTS _Bionic Beaver_ - Release amd64 (20180725)]/ bionic main restricted
+deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiversedeb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+</code></pre><p>源本应该是bionic但却是trusty，说明我这个系统镜像有问题要把trusty切换成bionic，接下来是解决环节</p>
+<pre><code>sudo sed -i &apos;s/trusty/bionic/g&apos; /etc/apt/sources.list
+sudo apt update
+</code></pre><p>搞定，然后继续配置环境，重回第一步<br>    sudo apt-get install build-essential cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev</p>
+<p>再</p>
+<pre><code>sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394
+</code></pre><p>然后出现errorE:unable to locate libjasper-dev，解决方法如下</p>
+<pre><code>sudo add-apt-repository &quot;deb http://security.ubuntu.com/ubuntu xenial-security main&quot;
+sudo apt update
+sudo apt install libjasper1 libjasper-dev
+</code></pre><p>其中libjasper1是libjasper-dev的依赖包，然后再次</p>
+<pre><code>sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394
+</code></pre><p>Done，接下来下载OpenCV的源码</p>
+<pre><code>wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.2.0.zip
+unzip opencv.zip
+</code></pre><p>#编译安装<br>进入OpenCV文件夹中创建build目录进行编译<br>    cd openvn-3.2.0<br>    mkdir build<br>    cd build<br>    cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr.local ..<br>    make<br>    sudo make install</p>
+<p>安装成功后具体测试办法看网上</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/15/Docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JaceChen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈乾乾的学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/15/Docker/" itemprop="url">
+                  Untitled
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-15 18:52:01" itemprop="dateCreated datePublished" datetime="2018-11-15T18:52:01+08:00">2018-11-15</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##Docker</p>
+<ul>
+<li>Docker image 镜像</li>
+</ul>
+<p>Docker 镜像是 Docker 容器运行时的只读模板，每一个镜像由一系列的层 (layers) 组成。Docker 使用 UnionFS 来将这些层联合到单独的镜像中。UnionFS 允许独立文件系统中的文件和文件夹(称之为分支)被透明覆盖，形成一个单独连贯的文件系统。正因为有了这些层的存在，Docker 是如此的轻量。当你改变了一个 Docker 镜像，比如升级到某个程序到新的版本，一个新的层会被创建。因此，不用替换整个原先的镜像或者重新建立(在使用虚拟机的时候你可能会这么做)，只是一个新 的层被添加或升级了。现在你不用重新发布整个镜像，只需要升级，层使得分发 Docker 镜像变得简单和快速。</p>
+<ul>
+<li>Docker repository仓库</li>
+</ul>
+<p>Docker 仓库用来保存镜像，可以理解为代码控制中的代码仓库。同样的，Docker 仓库也有公有和私有的概念。公有的 Docker 仓库名字是 Docker Hub。Docker Hub 提供了庞大的镜像集合供使用。这些镜像可以是自己创建，或者在别人的镜像基础上创建。Docker 仓库是 Docker 的分发部分。<br><em>注：registry是注册服务器（库），负责管理仓库，而repository是仓库</em></p>
+<ul>
+<li>Docker container容器</li>
+</ul>
+<p>Docker 容器和文件夹很类似，一个Docker容器包含了所有的某个应用运行所需要的环境。每一个 Docker 容器都是从 Docker 镜像创建的。Docker 容器可以运行、开始、停止、移动和删除。每一个 Docker 容器都是独立和安全的应用平台，Docker 容器是 Docker 的运行部分。</p>
+<ul>
+<li>因为namespace 从进程、网络、IPC、文件系统、UTS 和用户角度的隔离，一个 container 就可以对外展现出一个独立计算机的能力</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/Go的安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JaceChen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈乾乾的学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/14/Go的安装/" itemprop="url">
+                  Untitled
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-14 15:15:53" itemprop="dateCreated datePublished" datetime="2018-11-14T15:15:53+08:00">2018-11-14</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##Go的配置</p>
+<p>#安装<br>一开始用的是sudo apt-get install golang，后来发现自动安装的版本太低是1.2.1，所以只能手动下载。</p>
+<p>又因为官网抽风，只能在golang中国下1.9.1</p>
+<p>go的更新很麻烦，只能卸载旧版本再安装新版本。</p>
+<pre><code>sudo rm -rf /usr/lib/go  
+</code></pre><p>注：网上有些教程是/usr/local，根据自己系统具体情况来看</p>
+<p>接下来删除软连接，否则哪怕删了旧版本装了新版本，在输入go version时还是旧版本。  </p>
+<pre><code>sudo rm -rf /usr/bin/go  
+sudo rm -rf /usr/bin/godoc   
+sudo rm -rf /usr/bin/gofmt   
+</code></pre><p>接下来就解压下过来的新版本的包  </p>
+<pre><code>sudo tar -xzf go1.9.2.linux-amd64.tar.gz -C /usr/lib
+</code></pre><p>解压到/usr/lib上，官方教程是解压到/usr/local，但神奇的是我的ubuntu没有这个文件夹，所以看具体情况</p>
+<pre><code>sudo ln -s /usr/lib/go/bin/* /usr/bin/
+</code></pre><p>然后就好了，测试一下 </p>
+<pre><code>go version
+</code></pre><p>#环境变量<br>    vim ~/.bashrc<br>如果shell是其他的话，改相应的配置文件</p>
+<p>尾行添加：</p>
+<pre><code>export GOROOT=/usr/lib/go  #设置为go安装的路径，有些安装包会自动设置默认的goroot  
+export GOPATH=$HOME/go-workspace   #默认安装包的路径
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin 
+</code></pre><p>按 <em>esc</em> 后 <em>shift+：</em> 输入 <em>wq</em> 保存退出</p>
+<pre><code>source ~/.bashrc
+go env
+</code></pre><p>就可以看了</p>
+<p>但是等装完之后，我陷入了深思，我为什么要安装GO。<br>因为我在看一本《自己动手写docker》的书来学docker，然后发现，这本书教我写docker。。而不是用docker，我的天。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/01/transfer-learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JaceChen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈乾乾的学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/01/transfer-learning/" itemprop="url">
+                  transfer learning
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-01 17:02:05 / Modified: 17:03:06" itemprop="dateCreated datePublished" datetime="2018-09-01T17:02:05+08:00">2018-09-01</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#Spatial Localization and Detection</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/01/训练细节/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JaceChen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈乾乾的学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/01/训练细节/" itemprop="url">
+                  训练细节
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-01 16:15:56 / Modified: 16:59:50" itemprop="dateCreated datePublished" datetime="2018-09-01T16:15:56+08:00">2018-09-01</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>It’s wrong that ConvNets need a lot of data to train.</strong><br>事实上少量的数据同样可以，一般来说很少完全地开始进行卷积神经网络的训练，通常会先进行预训练和细调。  </p>
+<p>###预训练<br>可以先在一些大的数据集训练如ImageNet data，再去在我们所感兴趣的数据中训练。<br>首先得到ImageNet进行预训练的网络，再将最上方的层（分类器）移除，然后将这个卷积神经网络看成是一个固定特征提取器来进行训练，把这个特征提取器置于你的数据集上方，然后将替换原先作为分类器的层。</p>
+<p>再根据你的数据集大小来确定如何对卷积网络的最后一层进行训练或者对整个网络的一部分反向传播进行微调。如果有更多的数据，则可以在整个网络进行更深的反向传播。  </p>
+<p><strong>caffe model zoo已经有很多预训练的神经网络模型。</strong></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/31/Image-Classification-pipeline/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1042,153 +1857,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/25/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JaceChen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈乾乾的学习笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/25/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-08-25 21:26:00" itemprop="dateCreated datePublished" datetime="2018-08-25T21:26:00+08:00">2018-08-25</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1229,7 +1904,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
